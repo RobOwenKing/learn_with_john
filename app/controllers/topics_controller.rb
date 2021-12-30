@@ -13,7 +13,7 @@ class TopicsController < ApplicationController
     @topic = Topic.new(topic_params)
     @topic.save
 
-    redirect_to topic_path(@topic)
+    redirect_to topics_path
   end
 
   def edit
@@ -22,7 +22,7 @@ class TopicsController < ApplicationController
   def update
     @topic.update(topic_params)
 
-    redirect_to topic_path(@topic)
+    redirect_to topics_path
   end
 
   def destroy
