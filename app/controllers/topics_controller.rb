@@ -2,7 +2,10 @@ class TopicsController < ApplicationController
   before_action :set_topic, only: [:edit, :update, :destroy]
 
   def index
-    @topics = Topic.all
+    topics = Topic.all
+
+    @part_1s = topics.reject { |t| t.part_1.empty? }
+    @part_2s = topics.reject { |t| t.part_2.empty? }
   end
 
   def new
@@ -34,7 +37,7 @@ class TopicsController < ApplicationController
   private
 
   def topic_params
-    params.require(:topic).permit(:name, :is_part_1, :questions, :follow_ups)
+    params.require(:topic).permit(:name, :part_1, :part_2, :part_3)
   end
 
   def set_topic

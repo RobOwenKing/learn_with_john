@@ -2,7 +2,9 @@
 
 <%= link_to "Add new topic", new_topic_path, class: "btn btn-primary" %>
 
-<% @topics.each do |topic| %>
+<h2>Part 1</h2>
+
+<% @part_1s.each do |topic| %>
   <details class="topic-details">
     <summary>
       <h3>
@@ -17,15 +19,25 @@
         <% end %>
       </h3>
     </summary>
+  </details>
+<% end %>
 
-    <p>
-      <%= simple_format(topic.questions) %>
-    </p>
+<h2>Part 2 and 3</h2>
 
-    <% if !topic.is_part_1 %>
-      <p>
-        <%= simple_format(topic.follow_ups) %>
-      </p>
-    <% end %>
+<% @part_2s.each do |topic| %>
+  <details class="topic-details">
+    <summary>
+      <h3>
+        <%= topic.name %>
+
+        <%= link_to edit_topic_path(topic) do %>
+          <i class="far fa-edit"></i>
+        <% end %>
+
+        <%= link_to topic_path(topic), method: :delete, data: { confirm: "Confirm delete?" } do %>
+          <i class="far fa-trash-alt"></i>
+        <% end %>
+      </h3>
+    </summary>
   </details>
 <% end %>
