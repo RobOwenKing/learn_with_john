@@ -1,0 +1,19 @@
+<%= simple_form_for(@topic) do |f| %>
+  <%= f.input :name,
+        label: 'Topic',
+        error: 'This field is required' %>
+  <%= f.input :is_part_1,
+        legend_tag: false,
+        boolean_style: :inline,
+        as: :radio_buttons,
+        collection: [['Part 1', true], ['Part 2 and 3', false]],
+        error: 'This field is required' %>
+  <%= f.input :questions,
+        label: 'Questions',
+        placeholder: 'Either part 1 or part 2 as relevant',
+        error: 'This field is required' %>
+  <%= f.input :follow_ups,
+        label: 'Part 3',
+        placeholder: "Only if this is a part 2 and 3 topic" %>
+  <%= f.submit %>
+<% end %>
