@@ -1,0 +1,29 @@
+<main class="show-student">
+  <h1>
+    <%= @student.name_en %> (<%= @student.name_zh %>)
+
+    <%= link_to edit_student_path(@student) do %>
+      <i class="far fa-edit"></i>
+    <% end %>
+
+    <%= link_to student_path(@student), method: :delete, data: { confirm: "Confirm delete?" } do %>
+      <i class="far fa-trash-alt"></i>
+    <% end %>
+  </h1>
+
+  <h2>
+    Student details
+    <%= link_to edit_student_path(@student, anchor: "student_onboarding") do %>
+      <i class="far fa-edit"></i>
+    <% end %>
+  </h2>
+  <p><%= @student.onboarding %></p>
+
+  <h2>
+    Teacher's notes
+    <%= link_to edit_student_path(@student, anchor: "student_notes") do %>
+      <i class="far fa-edit"></i>
+    <% end %>
+  </h2>
+  <p><%= @student.notes %></p>
+</main>

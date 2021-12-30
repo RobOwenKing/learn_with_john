@@ -1,0 +1,15 @@
+<%= simple_form_for(@student) do |f| %>
+  <%= f.input :name_en,
+        label: 'English name',
+        error: 'This field is required - put the Chinese name here if necessary' %>
+  <%= f.input :name_zh,
+        label: 'Chinese name' %>
+  <%= f.input :onboarding,
+        label: 'Student details',
+        placeholder: 'eg: Where are they from? Where do they live? Do they study or work? What is their previous English experience? What is their learning goal?',
+        error: 'This field is required' %>
+  <%= f.input :notes,
+        label: 'Teacher notes',
+        placeholder: 'eg: Frequent mistakes they make. Topics to cover/follow up on in future lessons.' %>
+  <%= f.submit %>
+<% end %>
