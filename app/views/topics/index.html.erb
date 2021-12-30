@@ -19,6 +19,10 @@
         <% end %>
       </h3>
     </summary>
+
+    <p>
+      <%= simple_format(topic.part_1) %>
+    </p>
   </details>
 <% end %>
 
@@ -39,5 +43,15 @@
         <% end %>
       </h3>
     </summary>
+
+    <p>
+      <%= simple_format(topic.part_2) %>
+    </p>
+
+    <hr>
+
+    <p>
+      <%= simple_format(topic.part_3) %>
+    </p>
   </details>
 <% end %>
