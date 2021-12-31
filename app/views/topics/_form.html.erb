@@ -1,0 +1,12 @@
+<%= simple_form_for(@topic) do |f| %>
+  <%= f.input :name,
+        label: 'Topic',
+        error: 'This field is required' %>
+  <%= f.input :part_1,
+        placeholder: 'Press enter to start each question on a new line' %>
+  <%= f.input :part_2 %>
+  <%= f.input :part_2_hints,
+        placeholder: 'The four prompts examinees should talk about' %>
+  <%= f.input :part_3 %>
+  <%= f.submit %>
+<% end %>

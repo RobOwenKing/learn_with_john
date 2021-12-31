@@ -1,3 +1,11 @@
 .show-student p {
   white-space: pre-wrap;
 }
+
+details summary {
+  cursor: pointer;
+}
+
+details summary > * {
+  display: inline;
+}
