@@ -6,6 +6,10 @@ class StudentsController < ApplicationController
   end
 
   def show
+    topics = Topic.all
+
+    @part_1s = topics.reject { |t| t.part_1.empty? }
+    @part_2s = topics.reject { |t| t.part_2.empty? }
   end
 
   def new
