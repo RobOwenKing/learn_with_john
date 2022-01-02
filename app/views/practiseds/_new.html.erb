@@ -1,0 +1,6 @@
+<%= simple_form_for [ @student, @practised ] do |f| %>
+  <%= f.hidden_field :topic_id, value: topic.id %>
+  <%= f.hidden_field :student_id, value: @student.id %>
+  <%= f.input :user_id, label: "Practised with", collection: @users %>
+  <%= f.submit "Save", class: "btn btn-primary" %>
+<% end %>

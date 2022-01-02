@@ -1,6 +1,6 @@
 class PractisedsController < ApplicationController
   def create
-    @practised = Practised.new(practiced_params)
+    @practised = Practised.new(practised_params)
     @student = Student.find(params[:student_id])
     @practised.save
 
@@ -17,7 +17,7 @@ class PractisedsController < ApplicationController
 
   private
 
-  def practiced_params
-    params.permit(:user_id, :student_id, :topic_id)
+  def practised_params
+    params[:practised].permit(:user_id, :student_id, :topic_id)
   end
 end

@@ -10,10 +10,15 @@ class StudentsController < ApplicationController
 
     @part_1s = topics.reject { |t| t.part_1.empty? }
     @part_2s = topics.reject { |t| t.part_2.empty? }
+
+    @practiseds = Practised.where(student: @student)
+                           .map(&:topic_id)
+    @practised = Practised.new
+    @users = User.all
   end
 
   def new
-    @student = Student.new # needed to instantiate the form_for
+    @student = Student.new
   end
 
   def create
