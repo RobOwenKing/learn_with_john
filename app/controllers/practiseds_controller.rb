@@ -9,7 +9,7 @@ class PractisedsController < ApplicationController
 
   def destroy
     @practised = Practised.find(params[:id])
-    @student = Student.find(params[:student_id])
+    @student = @practised.student
     @practised.destroy
 
     redirect_to student_path(@student)
