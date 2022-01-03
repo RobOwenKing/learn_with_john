@@ -23,4 +23,6 @@ export const initClocks = () => {
   const clocks = document.querySelectorAll('.clock');
 
   updateClocks(clocks);
+
+  setInterval(() => { updateClocks(clocks); }, 1000);
 };
