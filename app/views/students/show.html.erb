@@ -33,7 +33,17 @@
 
     <details class="topic-details">
       <summary>
-        <h3><%= topic.name %></h3>
+        <% if @practiseds.include?(topic.id) %>
+          <h3 class="text-grey">
+            <i class="far fa-check-square"></i>
+            <%= topic.name %>
+          </h3>
+        <% else %>
+          <h3>
+            <i class="far fa-square"></i>
+            <%= topic.name %>
+          </h3>
+        <% end %>
       </summary>
 
       <p><%= topic.part_1 %></p>
