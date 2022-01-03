@@ -26,4 +26,72 @@
     <% end %>
   </h2>
   <p><%= @student.notes %></p>
+
+  <h2>Part 1</h2>
+
+  <% @part_1s.each do |topic| %>
+
+    <details class="topic-details">
+      <summary>
+        <% if @practised_ids.include?(topic.id) %>
+          <h3 class="text-grey">
+            <i class="far fa-check-square"></i>
+            <%= topic.name %>
+          </h3>
+        <% else %>
+          <h3>
+            <i class="far fa-square"></i>
+            <%= topic.name %>
+          </h3>
+        <% end %>
+      </summary>
+
+      <p><%= topic.part_1 %></p>
+
+      <% if @practiseds.any? { |p| p.topic.id == topic.id } %>
+        <%= link_to "Mark as unpractised",
+                    practised_path(@practiseds[@practiseds.find_index { |p| p.topic_id == topic.id }]),
+                    method: :delete,
+                    data: { confirm: "Confirm delete?" } %>
+      <% else %>
+        <%= render "practiseds/new", practised: @practised, topic: topic %>
+      <% end %>
+    </details>
+  <% end %>
+
+  <h2>Part 2 and 3</h2>
+
+  <% @part_2s.each do |topic| %>
+    <details class="topic-details">
+      <summary>
+        <% if @practised_ids.include?(topic.id) %>
+          <h3 class="text-grey">
+            <i class="far fa-check-square"></i>
+            <%= topic.name %>
+          </h3>
+        <% else %>
+          <h3>
+            <i class="far fa-square"></i>
+            <%= topic.name %>
+          </h3>
+        <% end %>
+      </summary>
+
+      <strong><%= topic.part_2 %></strong>
+      <p><%= topic.part_2_hints %></p>
+
+      <hr>
+
+      <p><%= topic.part_3 %></p>
+
+      <% if @practiseds.any? { |p| p.topic.id == topic.id } %>
+        <%= link_to "Mark as unpractised",
+                    practised_path(@practiseds[@practiseds.find_index { |p| p.topic_id == topic.id }]),
+                    method: :delete,
+                    data: { confirm: "Confirm delete?" } %>
+      <% else %>
+        <%= render "practiseds/new", practised: @practised, topic: topic %>
+      <% end %>
+    </details>
+  <% end %>
 </main>

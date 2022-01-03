@@ -9,7 +9,7 @@ class TopicsController < ApplicationController
   end
 
   def new
-    @topic = Topic.new # needed to instantiate the form_for
+    @topic = Topic.new
   end
 
   def create
