@@ -64,7 +64,17 @@
   <% @part_2s.each do |topic| %>
     <details class="topic-details">
       <summary>
-        <h3><%= topic.name %></h3>
+        <% if @practised_ids.include?(topic.id) %>
+          <h3 class="text-grey">
+            <i class="far fa-check-square"></i>
+            <%= topic.name %>
+          </h3>
+        <% else %>
+          <h3>
+            <i class="far fa-square"></i>
+            <%= topic.name %>
+          </h3>
+        <% end %>
       </summary>
 
       <strong><%= topic.part_2 %></strong>
@@ -73,6 +83,15 @@
       <hr>
 
       <p><%= topic.part_3 %></p>
+
+      <% if @practiseds.any? { |p| p.topic.id == topic.id } %>
+        <%= link_to "Mark as unpractised",
+                    practised_path(@practiseds[@practiseds.find_index { |p| p.topic_id == topic.id }]),
+                    method: :delete,
+                    data: { confirm: "Confirm delete?" } %>
+      <% else %>
+        <%= render "practiseds/new", practised: @practised, topic: topic %>
+      <% end %>
     </details>
   <% end %>
 </main>
