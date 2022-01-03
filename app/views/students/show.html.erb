@@ -33,7 +33,7 @@
 
     <details class="topic-details">
       <summary>
-        <% if @practiseds.include?(topic.id) %>
+        <% if @practised_ids.include?(topic.id) %>
           <h3 class="text-grey">
             <i class="far fa-check-square"></i>
             <%= topic.name %>
@@ -48,7 +48,14 @@
 
       <p><%= topic.part_1 %></p>
 
-      <%= render "practiseds/new", practised: @practised, topic: topic %>
+      <% if @practiseds.any? { |p| p.topic.id == topic.id } %>
+        <%= link_to "Mark as unpractised",
+                    practised_path(@practiseds[@practiseds.find_index { |p| p.topic_id == topic.id }]),
+                    method: :delete,
+                    data: { confirm: "Confirm delete?" } %>
+      <% else %>
+        <%= render "practiseds/new", practised: @practised, topic: topic %>
+      <% end %>
     </details>
   <% end %>
 

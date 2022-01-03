@@ -12,7 +12,7 @@ class StudentsController < ApplicationController
     @part_2s = topics.reject { |t| t.part_2.empty? }
 
     @practiseds = Practised.where(student: @student)
-                           .map(&:topic_id)
+    @practised_ids = @practiseds.map(&:topic_id)
     @practised = Practised.new
     @users = User.all
   end
