@@ -11,6 +11,13 @@
     <% end %>
   </h1>
 
+  <div class="clocks-container">
+    <div>
+      <p class="clock-label">Student's time:</p>
+      <p class="clock" data-timezone="<%= @student.timezone %>"></p>
+    </div>
+  </div>
+
   <h2>
     Student details
     <%= link_to edit_student_path(@student, anchor: "student_onboarding") do %>
