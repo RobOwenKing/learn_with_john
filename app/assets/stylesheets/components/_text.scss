@@ -1,3 +1,16 @@
+.clocks-container {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.clocks-container p {
+  margin-bottom: 0;
+}
+
+.clock {
+  font-size: 3rem;
+}
+
 .show-student p {
   white-space: pre-wrap;
 }
