@@ -14,8 +14,10 @@
         <li class="nav-item dropdown">
           <i class="fas fa-chevron-circle-down" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-            <%= link_to "All topics", topics_path, class: "dropdown-item" %>
-            <%= link_to "All students", students_path, class: "dropdown-item" %>
+            <% if !current_user.no_role? %>
+              <%= link_to "All topics", topics_path, class: "dropdown-item" %>
+              <%= link_to "All students", students_path, class: "dropdown-item" %>
+            <% end %>
             <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
           </div>
         </li>
