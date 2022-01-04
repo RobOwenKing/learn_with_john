@@ -1,5 +1,6 @@
 class TopicsController < ApplicationController
   before_action :set_topic, only: [:edit, :update, :destroy]
+  before_action :check_user_role
 
   def index
     topics = Topic.all
@@ -42,5 +43,9 @@ class TopicsController < ApplicationController
 
   def set_topic
     @topic = Topic.find(params[:id])
+  end
+
+  def check_user_role
+    redirect_to root_path if current_user.no_role?
   end
 end
