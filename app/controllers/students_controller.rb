@@ -46,7 +46,10 @@ class StudentsController < ApplicationController
   private
 
   def student_params
-    params.require(:student).permit(:name_zh, :name_en, :onboarding, :notes)
+    p = params.require(:student).permit(:name_zh, :name_en, :timezone, :onboarding, :notes)
+    p[:timezone] = ActiveSupport::TimeZone::MAPPING[p[:timezone]]
+
+    p
   end
 
   def set_student
