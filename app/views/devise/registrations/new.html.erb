@@ -15,6 +15,10 @@
     <%= f.input :password_confirmation,
                 required: true,
                 input_html: { autocomplete: "new-password" } %>
+    <%= f.input :timezone,
+                as: :time_zone,
+                label: "Time zone",
+                priority: [ ActiveSupport::TimeZone["Beijing"], ActiveSupport::TimeZone["Madrid"], ActiveSupport::TimeZone["London"] ] %>
   </div>
 
   <div class="form-actions">
