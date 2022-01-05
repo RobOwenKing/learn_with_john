@@ -14,7 +14,7 @@
   <div class="clocks-container">
     <div>
       <p class="clock-label">Student's time:</p>
-      <p class="clock" data-timezone="<%= @student.timezone %>"></p>
+      <p class="clock" data-timezone="<%= ActiveSupport::TimeZone::MAPPING[@student.timezone] %>"></p>
     </div>
   </div>
 

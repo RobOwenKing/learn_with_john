@@ -8,14 +8,8 @@ class ApplicationController < ActionController::Base
   protected
 
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up) do |u|
-      u[:timezone] = ActiveSupport::TimeZone::MAPPING[u[:timezone]]
-      u.permit(:name, :email, :password, :timezone)
-    end
+    devise_parameter_sanitizer.permit(:sign_up) { |u| u.permit(:name, :email, :password, :timezone) }
 
-    devise_parameter_sanitizer.permit(:account_update) do |u|
-      u[:timezone] = ActiveSupport::TimeZone::MAPPING[u[:timezone]]
-      u.permit(:name, :email, :password, :current_password, :timezone)
-    end
+    devise_parameter_sanitizer.permit(:account_update) { |u| u.permit(:name, :email, :password, :current_password, :timezone) }
   end
 end
