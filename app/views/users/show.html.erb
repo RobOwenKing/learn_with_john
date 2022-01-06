@@ -1,2 +1,19 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<main class="show-student">
+  <h1>
+    <%= @user.name %>
+
+    <% if current_user.admin? %>
+      (<%= @user.role %>)
+      <%= link_to edit_user_path(@user) do %>
+        <i class="far fa-edit"></i>
+      <% end %>
+    <% end %>
+  </h1>
+
+  <div class="clocks-container">
+    <div>
+      <p class="clock-label"><%= @user.name %>'s time:</p>
+      <p class="clock" data-timezone="<%= ActiveSupport::TimeZone::MAPPING[@user.timezone] %>"></p>
+    </div>
+  </div>
+</main>
