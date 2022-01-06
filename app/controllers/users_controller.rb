@@ -1,6 +1,5 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update]
-  before_action :check_user_role
   before_action :check_user_admin, only: [:index, :edit, :update]
 
   def index
@@ -27,10 +26,6 @@ class UsersController < ApplicationController
 
   def set_user
     @user = User.find(params[:id])
-  end
-
-  def check_user_role
-    redirect_to root_path if current_user.no_role?
   end
 
   def check_user_admin
