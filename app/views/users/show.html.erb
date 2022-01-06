@@ -12,7 +12,7 @@
 
   <div class="clocks-container">
     <div>
-      <p class="clock-label"><%= @user.name %>'s time:</p>
+      <p class="clock-label"><%= @user.name %>'s local time:</p>
       <p class="clock" data-timezone="<%= ActiveSupport::TimeZone::MAPPING[@user.timezone] %>"></p>
     </div>
   </div>

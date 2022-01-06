@@ -4,7 +4,7 @@
 <% if user_signed_in? %>
   <div class="clocks-container">
     <div>
-      <p class="clock-label">Your time (<%= link_to "Change", edit_user_registration_path %>):</p>
+      <p class="clock-label">Your local time (<%= link_to "Change", edit_user_registration_path %>):</p>
       <p class="clock" data-timezone="<%= ActiveSupport::TimeZone::MAPPING[current_user.timezone] %>"></p>
     </div>
     <div>
