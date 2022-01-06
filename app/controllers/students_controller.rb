@@ -3,11 +3,11 @@ class StudentsController < ApplicationController
   before_action :check_user_role
 
   def index
-    @students = Student.all
+    @students = Student.all.order(:name_en)
   end
 
   def show
-    topics = Topic.all
+    topics = Topic.all.order(:name)
 
     @part_1s = topics.reject { |t| t.part_1.empty? }
     @part_2s = topics.reject { |t| t.part_2.empty? }
@@ -15,7 +15,7 @@ class StudentsController < ApplicationController
     @practiseds = Practised.where(student: @student)
     @practised_ids = @practiseds.map(&:topic_id)
     @practised = Practised.new
-    @users = User.all
+    @users = User.all.order(:name)
   end
 
   def new

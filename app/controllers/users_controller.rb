@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   before_action :check_user_admin, only: [:index, :edit, :update]
 
   def index
-    @users = User.all
+    @users = User.all.order(:name)
   end
 
   def show

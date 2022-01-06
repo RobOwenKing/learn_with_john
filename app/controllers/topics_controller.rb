@@ -3,7 +3,7 @@ class TopicsController < ApplicationController
   before_action :check_user_role
 
   def index
-    topics = Topic.all
+    topics = Topic.all.order(:name)
 
     @part_1s = topics.reject { |t| t.part_1.empty? }
     @part_2s = topics.reject { |t| t.part_2.empty? }
