@@ -1,0 +1,7 @@
+<h1>Edit <%= @user.name %>'s Role</h1>
+
+<%= simple_form_for(@user) do |f| %>
+  <%= f.input :role,
+              collection: User.roles.keys %>
+  <%= f.button :submit, class: "btn btn-primary" %>
+<% end %>

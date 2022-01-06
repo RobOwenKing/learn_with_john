@@ -1,0 +1,9 @@
+<h1>All teachers</h1>
+
+<ul>
+  <% @users.each do |user| %>
+    <li>
+      <%= link_to user.name, user_path(user) %> (<%= user.role.capitalize %>)
+    </li>
+  <% end %>
+</ul>

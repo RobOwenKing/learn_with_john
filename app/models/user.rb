@@ -10,6 +10,8 @@ class User < ApplicationRecord
 
   has_many :practiseds
 
+  validates :name, presence: true
+
   private
 
   def set_defaults
