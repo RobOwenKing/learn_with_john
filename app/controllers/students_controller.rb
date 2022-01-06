@@ -1,6 +1,8 @@
 class StudentsController < ApplicationController
+  before_action :user_role?, only: [:show, :edit, :update]
+  before_action :user_admin?, only: [:index, :new, :create, :destroy]
+
   before_action :set_student, only: [:show, :edit, :update, :destroy]
-  before_action :check_user_role
 
   def index
     @students = Student.all.order(:name_en)
@@ -54,7 +56,11 @@ class StudentsController < ApplicationController
     @student = Student.find(params[:id])
   end
 
-  def check_user_role
+  def user_role?
     redirect_to root_path if current_user.no_role?
+  end
+
+  def user_admin?
+    redirect_to root_path unless current_user.admin?
   end
 end

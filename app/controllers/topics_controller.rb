@@ -1,6 +1,8 @@
 class TopicsController < ApplicationController
   before_action :set_topic, only: [:edit, :update, :destroy]
-  before_action :check_user_role
+
+  before_action :user_role?, only: [:index]
+  before_action :user_admin?, only: [:new, :create, :edit, :update, :destroy]
 
   def index
     topics = Topic.all.order(:name)
@@ -45,7 +47,11 @@ class TopicsController < ApplicationController
     @topic = Topic.find(params[:id])
   end
 
-  def check_user_role
+  def user_role?
     redirect_to root_path if current_user.no_role?
+  end
+
+  def user_admin?
+    redirect_to root_path unless current_user.admin?
   end
 end
