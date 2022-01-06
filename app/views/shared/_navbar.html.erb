@@ -18,6 +18,9 @@
               <%= link_to "All topics", topics_path, class: "dropdown-item" %>
               <%= link_to "All students", students_path, class: "dropdown-item" %>
             <% end %>
+            <% if current_user.admin? %>
+              <%= link_to "All teachers", users_path, class: "dropdown-item" %>
+            <% end %>
             <%= link_to "Edit profile", edit_user_registration_path, class: "dropdown-item" %>
             <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
           </div>
