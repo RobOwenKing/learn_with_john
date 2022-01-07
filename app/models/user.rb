@@ -9,6 +9,8 @@ class User < ApplicationRecord
   enum role: { no_role: 0, teacher: 1, admin: 2 }
 
   has_many :practiseds
+  has_many :lessons
+  has_many :students, through: :lessons
 
   validates :name, presence: true
 
