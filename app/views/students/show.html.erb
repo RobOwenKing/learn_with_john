@@ -22,6 +22,7 @@
     <summary>
       <h2>
         Student details
+        <i class="fas fa-caret-down"></i>
         <%= link_to edit_student_path(@student, anchor: "student_onboarding") do %>
           <i class="far fa-edit"></i>
         <% end %>
@@ -35,6 +36,7 @@
     <summary>
       <h2>
         Teacher's notes
+        <i class="fas fa-caret-down"></i>
         <%= link_to edit_student_path(@student, anchor: "student_notes") do %>
           <i class="far fa-edit"></i>
         <% end %>
@@ -53,11 +55,13 @@
           <h3 class="text-grey">
             <i class="far fa-check-square"></i>
             <%= topic.name %>
+            <i class="fas fa-caret-down"></i>
           </h3>
         <% else %>
           <h3>
             <i class="far fa-square"></i>
             <%= topic.name %>
+            <i class="fas fa-caret-down"></i>
           </h3>
         <% end %>
       </summary>
