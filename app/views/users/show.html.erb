@@ -16,4 +16,13 @@
       <p class="clock" data-timezone="<%= ActiveSupport::TimeZone::MAPPING[@user.timezone] %>"></p>
     </div>
   </div>
+
+  <h2><%= @user.name %>'s student(s)</h2>
+  <% @user.students.each do |student| %>
+    <li>
+      <%= link_to student_path(student) do %>
+        <%= student.name_en %> (<%= student.name_zh %>)
+      <% end %>
+    </li>
+  <% end %>
 </main>
