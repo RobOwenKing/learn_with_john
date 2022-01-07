@@ -1,13 +1,14 @@
 .clocks-container {
   display: flex;
   justify-content: space-evenly;
+  text-align: center;
 }
 
 .clocks-container p {
   margin-bottom: 0;
 }
 
-.clock {
+.large-text {
   font-size: 3rem;
 }
 
