@@ -8,7 +8,9 @@
         as: :time_zone,
         label: "Time zone",
         priority: [ ActiveSupport::TimeZone["Beijing"], ActiveSupport::TimeZone["Madrid"], ActiveSupport::TimeZone["London"] ] %>
-  <%= f.association :users, as: :check_boxes %>
+  <% if current_user.admin? %>
+    <%= f.association :users, as: :check_boxes %>
+  <% end %>
   <%= f.input :onboarding,
         label: 'Student details',
         placeholder: 'eg: Where are they from? Where do they live? Do they study or work? What is their previous English experience? What is their learning goal?',
