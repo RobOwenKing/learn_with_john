@@ -49,7 +49,7 @@ class StudentsController < ApplicationController
   private
 
   def student_params
-    params.require(:student).permit(:name_zh, :name_en, :timezone, :onboarding, :notes)
+    params.require(:student).permit(:name_zh, :name_en, :timezone, :onboarding, :notes, user_ids: [])
   end
 
   def set_student
