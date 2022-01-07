@@ -18,21 +18,31 @@
     </div>
   </div>
 
-  <h2>
-    Student details
-    <%= link_to edit_student_path(@student, anchor: "student_onboarding") do %>
-      <i class="far fa-edit"></i>
-    <% end %>
-  </h2>
-  <p><%= @student.onboarding %></p>
+  <details>
+    <summary>
+      <h2>
+        Student details
+        <%= link_to edit_student_path(@student, anchor: "student_onboarding") do %>
+          <i class="far fa-edit"></i>
+        <% end %>
+      </h2>
+    </summary>
 
-  <h2>
-    Teacher's notes
-    <%= link_to edit_student_path(@student, anchor: "student_notes") do %>
-      <i class="far fa-edit"></i>
-    <% end %>
-  </h2>
-  <p><%= @student.notes %></p>
+    <p><%= @student.onboarding %></p>
+  </details>
+
+  <details>
+    <summary>
+      <h2>
+        Teacher's notes
+        <%= link_to edit_student_path(@student, anchor: "student_notes") do %>
+          <i class="far fa-edit"></i>
+        <% end %>
+      </h2>
+    </summary>
+
+    <p><%= @student.notes %></p>
+  </details>
 
   <h2>Part 1</h2>
 
