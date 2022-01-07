@@ -1,8 +1,8 @@
 class TopicsController < ApplicationController
-  before_action :set_topic, only: [:edit, :update, :destroy]
+  before_action :set_topic, only: %i[edit update destroy]
 
-  before_action :user_role?, only: [:index]
-  before_action :user_admin?, only: [:new, :create, :edit, :update, :destroy]
+  before_action :user_role?, only: %i[index]
+  before_action :user_admin?, only: %i[new create edit update destroy]
 
   def index
     topics = Topic.all.order(:name)

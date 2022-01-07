@@ -1,8 +1,8 @@
 class StudentsController < ApplicationController
-  before_action :user_role?, only: [:show, :edit, :update]
-  before_action :user_admin?, only: [:index, :new, :create, :destroy]
+  before_action :user_role?, only: %i[show edit update]
+  before_action :user_admin?, only: %i[index new create destroy]
 
-  before_action :set_student, only: [:show, :edit, :update, :destroy]
+  before_action :set_student, only: %i[show edit update destroy]
 
   def index
     @students = Student.all.order(:name_en)
