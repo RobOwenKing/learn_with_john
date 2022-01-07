@@ -1,9 +1,10 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update]
-  before_action :check_user_admin, only: [:index, :edit, :update]
+  before_action :user_admin?, only: %i[index edit update]
+
+  before_action :set_user, only: %i[show edit update]
 
   def index
-    @users = User.all
+    @users = User.all.order(:name)
   end
 
   def show
@@ -28,7 +29,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
-  def check_user_admin
+  def user_admin?
     redirect_to root_path unless current_user.admin?
   end
 end

@@ -13,26 +13,38 @@
 
   <div class="clocks-container">
     <div>
-      <p class="clock-label">Student's time:</p>
+      <p class="clock-label">Student's local time:</p>
       <p class="clock" data-timezone="<%= ActiveSupport::TimeZone::MAPPING[@student.timezone] %>"></p>
     </div>
   </div>
 
-  <h2>
-    Student details
-    <%= link_to edit_student_path(@student, anchor: "student_onboarding") do %>
-      <i class="far fa-edit"></i>
-    <% end %>
-  </h2>
-  <p><%= @student.onboarding %></p>
+  <details>
+    <summary>
+      <h2>
+        Student details
+        <i class="fas fa-caret-down"></i>
+        <%= link_to edit_student_path(@student, anchor: "student_onboarding") do %>
+          <i class="far fa-edit"></i>
+        <% end %>
+      </h2>
+    </summary>
 
-  <h2>
-    Teacher's notes
-    <%= link_to edit_student_path(@student, anchor: "student_notes") do %>
-      <i class="far fa-edit"></i>
-    <% end %>
-  </h2>
-  <p><%= @student.notes %></p>
+    <p><%= @student.onboarding %></p>
+  </details>
+
+  <details>
+    <summary>
+      <h2>
+        Teacher's notes
+        <i class="fas fa-caret-down"></i>
+        <%= link_to edit_student_path(@student, anchor: "student_notes") do %>
+          <i class="far fa-edit"></i>
+        <% end %>
+      </h2>
+    </summary>
+
+    <p><%= @student.notes %></p>
+  </details>
 
   <h2>Part 1</h2>
 
@@ -41,13 +53,15 @@
       <summary>
         <% if @practised_ids.include?(topic.id) %>
           <h3 class="text-grey">
-            <i class="far fa-check-square"></i>
+            <i class="fas fa-check"></i>
             <%= topic.name %>
+            <i class="fas fa-caret-down"></i>
           </h3>
         <% else %>
           <h3>
-            <i class="far fa-square"></i>
+            <i class="fas fa-spinner"></i>
             <%= topic.name %>
+            <i class="fas fa-caret-down"></i>
           </h3>
         <% end %>
       </summary>
@@ -72,13 +86,15 @@
       <summary>
         <% if @practised_ids.include?(topic.id) %>
           <h3 class="text-grey">
-            <i class="far fa-check-square"></i>
+            <i class="fas fa-check"></i>
             <%= topic.name %>
+            <i class="fas fa-caret-down"></i>
           </h3>
         <% else %>
           <h3>
-            <i class="far fa-square"></i>
+            <i class="fas fa-spinner"></i>
             <%= topic.name %>
+            <i class="fas fa-caret-down"></i>
           </h3>
         <% end %>
       </summary>

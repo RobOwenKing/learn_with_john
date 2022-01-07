@@ -1,5 +1,5 @@
 class PractisedsController < ApplicationController
-  before_action :check_user_role
+  before_action :user_role?
 
   def create
     @practised = Practised.new(practised_params)
@@ -23,7 +23,7 @@ class PractisedsController < ApplicationController
     params[:practised].permit(:user_id, :student_id, :topic_id)
   end
 
-  def check_user_role
+  def user_role?
     redirect_to root_path if current_user.no_role?
   end
 end
