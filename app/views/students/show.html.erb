@@ -18,7 +18,7 @@
     </div>
     <div>
       <p class="clock-label"><%= @student.name_en %>'s teacher(s):</p>
-      <p class="large-text"><% @student.teachers.each do |teacher| %><%= link_to teacher.name, user_path(teacher) %><% end %></p>
+      <p class="large-text"><% @student.teachers.each do |teacher| %><%= link_to teacher.name, user_path(teacher) %><br /><% end %></p>
     </div>
   </div>
 
