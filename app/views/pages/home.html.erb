@@ -5,11 +5,11 @@
   <div class="clocks-container">
     <div>
       <p class="clock-label">Your local time (<%= link_to "Change", edit_user_registration_path %>):</p>
-      <p class="clock" data-timezone="<%= ActiveSupport::TimeZone::MAPPING[current_user.timezone] %>"></p>
+      <p class="clock large-text" data-timezone="<%= ActiveSupport::TimeZone::MAPPING[current_user.timezone] %>"></p>
     </div>
     <div>
       <p class="clock-label">China time:</p>
-      <p class="clock" data-timezone="<%= ActiveSupport::TimeZone::MAPPING["Beijing"] %>"></p>
+      <p class="clock large-text" data-timezone="<%= ActiveSupport::TimeZone::MAPPING["Beijing"] %>"></p>
     </div>
   </div>
 <% end %>

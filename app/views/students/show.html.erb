@@ -13,8 +13,12 @@
 
   <div class="clocks-container">
     <div>
-      <p class="clock-label">Student's local time:</p>
-      <p class="clock" data-timezone="<%= ActiveSupport::TimeZone::MAPPING[@student.timezone] %>"></p>
+      <p class="clock-label"><%= @student.name_en %>'s local time:</p>
+      <p class="clock large-text" data-timezone="<%= ActiveSupport::TimeZone::MAPPING[@student.timezone] %>"></p>
+    </div>
+    <div>
+      <p class="clock-label"><%= @student.name_en %>'s teacher(s):</p>
+      <p class="large-text"><% @student.teachers.each do |teacher| %><%= link_to teacher.name, user_path(teacher) %><% end %></p>
     </div>
   </div>
 

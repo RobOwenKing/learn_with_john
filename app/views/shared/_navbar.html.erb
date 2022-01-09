@@ -15,9 +15,10 @@
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
             <% if !current_user.no_role? %>
               <%= link_to "All topics", topics_path, class: "dropdown-item" %>
-              <%= link_to "All students", students_path, class: "dropdown-item" %>
+              <%= link_to "My students", user_path(current_user), class: "dropdown-item" %>
             <% end %>
             <% if current_user.admin? %>
+              <%= link_to "All students", students_path, class: "dropdown-item" %>
               <%= link_to "All teachers", users_path, class: "dropdown-item" %>
             <% end %>
             <%= link_to "Edit profile", edit_user_registration_path, class: "dropdown-item" %>
