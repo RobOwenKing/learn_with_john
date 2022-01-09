@@ -73,10 +73,11 @@
       <p><%= topic.part_1 %></p>
 
       <% if @practiseds.any? { |p| p.topic.id == topic.id } %>
+        <p>Practised with <%= find_practised(@practiseds, topic).user.name %></p>
         <%= link_to "Mark as unpractised",
-                    practised_path(@practiseds[@practiseds.find_index { |p| p.topic_id == topic.id }]),
+                    practised_path(find_practised(@practiseds, topic)),
                     method: :delete,
-                    data: { confirm: "Confirm delete?" } %>
+                    data: { confirm: "Definitely mark as unpractised?" } %>
       <% else %>
         <%= render "practiseds/new", practised: @practised, topic: topic %>
       <% end %>
@@ -112,10 +113,11 @@
       <p><%= topic.part_3 %></p>
 
       <% if @practiseds.any? { |p| p.topic.id == topic.id } %>
+        <p>Practised with <%= find_practised(@practiseds, topic).user.name %></p>
         <%= link_to "Mark as unpractised",
-                    practised_path(@practiseds[@practiseds.find_index { |p| p.topic_id == topic.id }]),
+                    practised_path(find_practised(@practiseds, topic)),
                     method: :delete,
-                    data: { confirm: "Confirm delete?" } %>
+                    data: { confirm: "Definitely mark as unpractised?" } %>
       <% else %>
         <%= render "practiseds/new", practised: @practised, topic: topic %>
       <% end %>
