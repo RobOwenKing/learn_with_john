@@ -1,28 +1,26 @@
-<main class="show-student">
-  <h1>
-    <%= @user.name %>
+<h1>
+  <%= @user.name %>
 
-    <% if current_user.admin? %>
-      (<%= @user.role.capitalize %>)
-      <%= link_to edit_user_path(@user) do %>
-        <i class="far fa-edit"></i>
-      <% end %>
+  <% if current_user.admin? %>
+    (<%= @user.role.capitalize %>)
+    <%= link_to edit_user_path(@user) do %>
+      <i class="far fa-edit"></i>
     <% end %>
-  </h1>
-
-  <div class="clocks-container">
-    <div>
-      <p class="clock-label"><%= @user.name %>'s local time:</p>
-      <p class="clock large-text" data-timezone="<%= ActiveSupport::TimeZone::MAPPING[@user.timezone] %>"></p>
-    </div>
-  </div>
-
-  <h2><%= @user.name %>'s student(s)</h2>
-  <% @user.students.each do |student| %>
-    <li>
-      <%= link_to student_path(student) do %>
-        <%= student.name_en %> (<%= student.name_zh %>)
-      <% end %>
-    </li>
   <% end %>
-</main>
+</h1>
+
+<div class="clocks-container">
+  <div>
+    <p class="clock-label"><%= @user.name %>'s local time:</p>
+    <p class="clock large-text" data-timezone="<%= ActiveSupport::TimeZone::MAPPING[@user.timezone] %>"></p>
+  </div>
+</div>
+
+<h2><%= @user.name %>'s student(s)</h2>
+<% @user.students.each do |student| %>
+  <li>
+    <%= link_to student_path(student) do %>
+      <%= student.name_en %> (<%= student.name_zh %>)
+    <% end %>
+  </li>
+<% end %>
