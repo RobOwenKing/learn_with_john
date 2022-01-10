@@ -10,6 +10,8 @@
       <h3>
         <%= topic.name %>
 
+        <i class="fas fa-caret-down"></i>
+
         <%= link_to edit_topic_path(topic) do %>
           <i class="far fa-edit"></i>
         <% end %>
@@ -32,6 +34,8 @@
       <h3>
         <%= topic.name %>
 
+        <i class="fas fa-caret-down"></i>
+
         <%= link_to edit_topic_path(topic) do %>
           <i class="far fa-edit"></i>
         <% end %>
@@ -42,7 +46,8 @@
       </h3>
     </summary>
 
-    <strong><%= topic.part_2 %></strong>
+    <strong><%= topic.part_2 %> <em>You should say:</em></strong>
+
     <p><%= simple_format(topic.part_2_hints) %></p>
 
     <hr>

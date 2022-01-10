@@ -1,123 +1,124 @@
-<main class="show-student">
-  <h1>
-    <%= @student.name_en %> (<%= @student.name_zh %>)
+<h1>
+  <%= @student.name_en %> (<%= @student.name_zh %>)
 
-    <%= link_to edit_student_path(@student) do %>
-      <i class="far fa-edit"></i>
-    <% end %>
+  <%= link_to edit_student_path(@student) do %>
+    <i class="far fa-edit"></i>
+  <% end %>
 
-    <%= link_to student_path(@student), method: :delete, data: { confirm: "Confirm delete?" } do %>
-      <i class="far fa-trash-alt"></i>
-    <% end %>
-  </h1>
+  <%= link_to student_path(@student), method: :delete, data: { confirm: "Confirm delete?" } do %>
+    <i class="far fa-trash-alt"></i>
+  <% end %>
+</h1>
 
-  <div class="clocks-container">
-    <div>
-      <p class="clock-label"><%= @student.name_en %>'s local time:</p>
-      <p class="clock large-text" data-timezone="<%= ActiveSupport::TimeZone::MAPPING[@student.timezone] %>"></p>
-    </div>
-    <div>
-      <p class="clock-label"><%= @student.name_en %>'s teacher(s):</p>
-      <p class="large-text"><% @student.teachers.each do |teacher| %><%= link_to teacher.name, user_path(teacher) %><% end %></p>
-    </div>
+<div class="clocks-container">
+  <div>
+    <p class="clock-label"><%= @student.name_en %>'s local time:</p>
+    <p class="clock large-text" data-timezone="<%= ActiveSupport::TimeZone::MAPPING[@student.timezone] %>"></p>
   </div>
+  <div>
+    <p class="clock-label"><%= @student.name_en %>'s teacher(s):</p>
+    <p class="large-text"><% @student.teachers.each do |teacher| %><%= link_to teacher.name, user_path(teacher) %><br /><% end %></p>
+  </div>
+</div>
 
-  <details>
+<details>
+  <summary>
+    <h2>
+      Student details
+      <i class="fas fa-caret-down"></i>
+      <%= link_to edit_student_path(@student, anchor: "student_onboarding") do %>
+        <i class="far fa-edit"></i>
+      <% end %>
+    </h2>
+  </summary>
+
+  <p><%= @student.onboarding %></p>
+</details>
+
+<details>
+  <summary>
+    <h2>
+      Teacher's notes
+      <i class="fas fa-caret-down"></i>
+      <%= link_to edit_student_path(@student, anchor: "student_notes") do %>
+        <i class="far fa-edit"></i>
+      <% end %>
+    </h2>
+  </summary>
+
+  <p><%= @student.notes %></p>
+</details>
+
+<h2>Part 1</h2>
+
+<% @part_1s.each do |topic| %>
+  <details class="topic-details">
     <summary>
-      <h2>
-        Student details
-        <i class="fas fa-caret-down"></i>
-        <%= link_to edit_student_path(@student, anchor: "student_onboarding") do %>
-          <i class="far fa-edit"></i>
-        <% end %>
-      </h2>
+      <% if @practised_ids.include?(topic.id) %>
+        <h3 class="text-grey">
+          <i class="fas fa-check"></i>
+          <%= topic.name %>
+          <i class="fas fa-caret-down"></i>
+        </h3>
+      <% else %>
+        <h3>
+          <i class="fas fa-spinner"></i>
+          <%= topic.name %>
+          <i class="fas fa-caret-down"></i>
+        </h3>
+      <% end %>
     </summary>
 
-    <p><%= @student.onboarding %></p>
-  </details>
+    <p class="white-space-pre-wrap"><%= topic.part_1 %></p>
 
-  <details>
+    <% if @practiseds.any? { |p| p.topic.id == topic.id } %>
+      <p>Practised with <%= find_practised(@practiseds, topic).user.name %></p>
+      <%= link_to "Mark as unpractised",
+                  practised_path(find_practised(@practiseds, topic)),
+                  method: :delete,
+                  data: { confirm: "Definitely mark as unpractised?" } %>
+    <% else %>
+      <%= render "practiseds/new", practised: @practised, topic: topic %>
+    <% end %>
+  </details>
+<% end %>
+
+<h2>Part 2 and 3</h2>
+
+<% @part_2s.each do |topic| %>
+  <details class="topic-details">
     <summary>
-      <h2>
-        Teacher's notes
-        <i class="fas fa-caret-down"></i>
-        <%= link_to edit_student_path(@student, anchor: "student_notes") do %>
-          <i class="far fa-edit"></i>
-        <% end %>
-      </h2>
+      <% if @practised_ids.include?(topic.id) %>
+        <h3 class="text-grey">
+          <i class="fas fa-check"></i>
+          <%= topic.name %>
+          <i class="fas fa-caret-down"></i>
+        </h3>
+      <% else %>
+        <h3>
+          <i class="fas fa-spinner"></i>
+          <%= topic.name %>
+          <i class="fas fa-caret-down"></i>
+        </h3>
+      <% end %>
     </summary>
 
-    <p><%= @student.notes %></p>
+    <strong><%= topic.part_2 %> <em>You should say:</em></strong>
+
+    <p class="white-space-pre-wrap"><%= topic.part_2_hints %></p>
+
+    <hr>
+
+    <p class="white-space-pre-wrap"><%= topic.part_3 %></p>
+
+    <% if @practiseds.any? { |p| p.topic.id == topic.id } %>
+      <p>Practised with <%= find_practised(@practiseds, topic).user.name %></p>
+      <%= link_to "Mark as unpractised",
+                  practised_path(find_practised(@practiseds, topic)),
+                  method: :delete,
+                  data: { confirm: "Definitely mark as unpractised?" } %>
+    <% else %>
+      <%= render "practiseds/new", practised: @practised, topic: topic %>
+    <% end %>
   </details>
-
-  <h2>Part 1</h2>
-
-  <% @part_1s.each do |topic| %>
-    <details class="topic-details">
-      <summary>
-        <% if @practised_ids.include?(topic.id) %>
-          <h3 class="text-grey">
-            <i class="fas fa-check"></i>
-            <%= topic.name %>
-            <i class="fas fa-caret-down"></i>
-          </h3>
-        <% else %>
-          <h3>
-            <i class="fas fa-spinner"></i>
-            <%= topic.name %>
-            <i class="fas fa-caret-down"></i>
-          </h3>
-        <% end %>
-      </summary>
-
-      <p><%= topic.part_1 %></p>
-
-      <% if @practiseds.any? { |p| p.topic.id == topic.id } %>
-        <%= link_to "Mark as unpractised",
-                    practised_path(@practiseds[@practiseds.find_index { |p| p.topic_id == topic.id }]),
-                    method: :delete,
-                    data: { confirm: "Confirm delete?" } %>
-      <% else %>
-        <%= render "practiseds/new", practised: @practised, topic: topic %>
-      <% end %>
-    </details>
-  <% end %>
-
-  <h2>Part 2 and 3</h2>
-
-  <% @part_2s.each do |topic| %>
-    <details class="topic-details">
-      <summary>
-        <% if @practised_ids.include?(topic.id) %>
-          <h3 class="text-grey">
-            <i class="fas fa-check"></i>
-            <%= topic.name %>
-            <i class="fas fa-caret-down"></i>
-          </h3>
-        <% else %>
-          <h3>
-            <i class="fas fa-spinner"></i>
-            <%= topic.name %>
-            <i class="fas fa-caret-down"></i>
-          </h3>
-        <% end %>
-      </summary>
-
-      <strong><%= topic.part_2 %></strong>
-      <p><%= topic.part_2_hints %></p>
-
-      <hr>
-
-      <p><%= topic.part_3 %></p>
-
-      <% if @practiseds.any? { |p| p.topic.id == topic.id } %>
-        <%= link_to "Mark as unpractised",
-                    practised_path(@practiseds[@practiseds.find_index { |p| p.topic_id == topic.id }]),
-                    method: :delete,
-                    data: { confirm: "Confirm delete?" } %>
-      <% else %>
-        <%= render "practiseds/new", practised: @practised, topic: topic %>
-      <% end %>
-    </details>
-  <% end %>
-</main>
+<% end %>
