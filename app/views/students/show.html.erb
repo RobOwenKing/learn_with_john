@@ -10,7 +10,7 @@
   <% end %>
 </h1>
 
-<p>Use <strong><%= @student.app %></strong> for classes</p>
+<p>Use <strong><%= @student.app.length > 0 ? @student.app : '???' %></strong> for classes</p>
 
 <div class="clocks-container">
   <div>
