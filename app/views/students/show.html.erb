@@ -23,33 +23,35 @@
   </div>
 </div>
 
-<details>
-  <summary>
-    <h2>
-      Student details
-      <i class="fas fa-caret-down"></i>
-      <%= link_to edit_student_path(@student, anchor: "student_onboarding") do %>
-        <i class="far fa-edit"></i>
-      <% end %>
-    </h2>
-  </summary>
+<div class="details-and-notes">
+  <details>
+    <summary>
+      <h2>
+        Student details
+        <i class="fas fa-caret-down"></i>
+        <%= link_to edit_student_path(@student, anchor: "student_onboarding") do %>
+          <i class="far fa-edit"></i>
+        <% end %>
+      </h2>
+    </summary>
 
-  <p class="white-space-pre-wrap"><%= @student.onboarding %></p>
-</details>
+    <p class="white-space-pre-wrap"><%= @student.onboarding %></p>
+  </details>
 
-<details>
-  <summary>
-    <h2>
-      Teacher's notes
-      <i class="fas fa-caret-down"></i>
-      <%= link_to edit_student_path(@student, anchor: "student_notes") do %>
-        <i class="far fa-edit"></i>
-      <% end %>
-    </h2>
-  </summary>
+  <details>
+    <summary>
+      <h2>
+        Teacher's notes
+        <i class="fas fa-caret-down"></i>
+        <%= link_to edit_student_path(@student, anchor: "student_notes") do %>
+          <i class="far fa-edit"></i>
+        <% end %>
+      </h2>
+    </summary>
 
-  <p class="white-space-pre-wrap"><%= @student.notes %></p>
-</details>
+    <p class="white-space-pre-wrap"><%= @student.notes %></p>
+  </details>
+</div>
 
 <h2>Part 1</h2>
 

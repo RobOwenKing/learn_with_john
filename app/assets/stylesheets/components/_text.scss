@@ -41,3 +41,14 @@ details summary > * {
 .text-grey {
   color: #555;
 }
+
+@media (min-width: 650px) {
+  .details-and-notes {
+    display: flex;
+  }
+
+  .details-and-notes details {
+    width: 50vw;
+    padding-right: 16px;
+  }
+}
