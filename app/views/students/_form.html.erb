@@ -8,6 +8,9 @@
         as: :time_zone,
         label: "Time zone",
         priority: [ ActiveSupport::TimeZone["Beijing"], ActiveSupport::TimeZone["Madrid"], ActiveSupport::TimeZone["London"] ] %>
+  <%= f.input :app,
+        label: 'What app do they want to use for classes?',
+        placeholder: 'eg: WeChat (video or voice-only), Zoom, etc.' %>
   <% if current_user.admin? %>
     <%= f.association :users, as: :check_boxes %>
   <% end %>
