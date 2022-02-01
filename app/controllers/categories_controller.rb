@@ -5,10 +5,7 @@ class CategoriesController < ApplicationController
   before_action :user_admin?, only: %i[new create edit update destroy]
 
   def index
-    categories = Category.all.order(:name)
-
-    @part_1s = categories.reject { |t| t.part_1.empty? }
-    @part_2s = categories.reject { |t| t.part_2.empty? }
+    @categories = Category.all.order(:name)
   end
 
   def show
