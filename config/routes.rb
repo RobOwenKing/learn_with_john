@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  get 'categories/index'
+  get 'categories/show'
+  get 'categories/new'
+  get 'categories/create'
+  get 'categories/edit'
+  get 'categories/update'
   devise_for :users, :path_prefix => 'd'
   resources :users, only: [ :index, :show, :edit, :update ]
   resources :students do
