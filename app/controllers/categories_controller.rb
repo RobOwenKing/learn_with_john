@@ -5,7 +5,10 @@ class CategoriesController < ApplicationController
   before_action :user_admin?, only: %i[new create edit update destroy]
 
   def index
-    @categories = Category.all.order(:name)
+    categories = Category.all.order(name: :desc)
+
+    @currents = categories.select(&:current)
+    @olds = categories.reject(&:current)
   end
 
   def show

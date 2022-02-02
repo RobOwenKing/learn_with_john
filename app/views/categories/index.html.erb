@@ -1,3 +1,17 @@
 <h1>All Categories</h1>
 
 <%= link_to "Add new topic category", new_category_path, class: "btn btn-primary" %>
+
+<h2>Current categories</h2>
+<% @currents.each do |category| %>
+  <%= link_to category_path(category) do %>
+    <h3><%= category.name %></h3>
+  <% end %>
+<% end %>
+
+<h2>Old categories</h2>
+<% @olds.each do |category| %>
+  <%= link_to category_path(category) do %>
+    <h3><%= category.name %></h3>
+  <% end %>
+<% end %>
