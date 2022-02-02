@@ -5,14 +5,15 @@ class TopicsController < ApplicationController
   before_action :user_admin?, only: %i[new create edit update destroy]
 
   def index
-    topics = Topic.all.order(:name)
+    @topics = Topic.all.order(:name)
 
-    @part_1s = topics.reject { |t| t.part_1.empty? }
-    @part_2s = topics.reject { |t| t.part_2.empty? }
+    @part_1s = @topics.reject { |t| t.part_1.empty? }
+    @part_2s = @topics.reject { |t| t.part_2.empty? }
   end
 
   def new
     @topic = Topic.new
+    @categories = Category.all.order(name: :desc)
   end
 
   def create
@@ -23,6 +24,7 @@ class TopicsController < ApplicationController
   end
 
   def edit
+    @categories = Category.all.order(name: :desc)
   end
 
   def update
@@ -40,7 +42,7 @@ class TopicsController < ApplicationController
   private
 
   def topic_params
-    params.require(:topic).permit(:name, :part_1, :part_2, :part_2_hints, :part_3)
+    params.require(:topic).permit(:name, :category_id, :part_1, :part_2, :part_2_hints, :part_3)
   end
 
   def set_topic

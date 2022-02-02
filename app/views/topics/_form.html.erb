@@ -2,6 +2,9 @@
   <%= f.input :name,
         label: 'Topic',
         error: 'This field is required' %>
+  <%= f.input :category_id,
+        collection: @categories,
+        label_method: :name %>
   <%= f.input :part_1,
         placeholder: 'Press enter to start each question on a new line' %>
   <%= f.input :part_2 %>
