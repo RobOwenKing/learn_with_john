@@ -19,7 +19,7 @@
             <% end %>
             <% if !current_user.no_role? %>
               <%= link_to "My students", user_path(current_user), class: "dropdown-item" %>
-              <%= link_to "All topic categories", categories_path, class: "dropdown-item" %>
+              <%= link_to "All topic sets", categories_path, class: "dropdown-item" %>
               <%= link_to "All topics", topics_path, class: "dropdown-item" %>
             <% end %>
             <%= link_to "Edit profile", edit_user_registration_path, class: "dropdown-item" %>

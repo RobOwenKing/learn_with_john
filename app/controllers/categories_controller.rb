@@ -1,5 +1,5 @@
 class CategoriesController < ApplicationController
-  before_action :set_category, only: %i[edit update destroy]
+  before_action :set_category, only: %i[show edit update destroy]
 
   before_action :user_role?, only: %i[index show]
   before_action :user_admin?, only: %i[new create edit update destroy]
@@ -51,7 +51,7 @@ class CategoriesController < ApplicationController
   end
 
   def set_category
-    @category = category.find(params[:id])
+    @category = Category.find(params[:id])
   end
 
   def user_role?

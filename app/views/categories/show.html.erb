@@ -1,2 +1,67 @@
-<h1>Categories#show</h1>
-<p>Find me in app/views/categories/show.html.erb</p>
+<h1 class="<%= @category.current ? '' : 'text-grey' %> ">
+  <%= @category.name %>
+
+  <%= link_to edit_category_path(@category) do %>
+    <i class="far fa-edit"></i>
+  <% end %>
+
+  <%= link_to category_path(@category), method: :delete, data: { confirm: "Confirm delete?" } do %>
+    <i class="far fa-trash-alt"></i>
+  <% end %>
+</h1>
+
+<p>(<%= @category.current ? 'Current' : 'Former' %> Topic Set)</p>
+
+<h2>Part 1</h2>
+
+<% @part_1s.each do |topic| %>
+  <details class="topic-details">
+    <summary>
+      <h3>
+        <%= topic.name %>
+
+        <i class="fas fa-caret-down"></i>
+
+        <%= link_to edit_topic_path(topic) do %>
+          <i class="far fa-edit"></i>
+        <% end %>
+
+        <%= link_to topic_path(topic), method: :delete, data: { confirm: "Confirm delete?" } do %>
+          <i class="far fa-trash-alt"></i>
+        <% end %>
+      </h3>
+    </summary>
+
+    <p><%= simple_format(topic.part_1) %></p>
+  </details>
+<% end %>
+
+<h2>Part 2 and 3</h2>
+
+<% @part_2s.each do |topic| %>
+  <details class="topic-details">
+    <summary>
+      <h3>
+        <%= topic.name %>
+
+        <i class="fas fa-caret-down"></i>
+
+        <%= link_to edit_topic_path(topic) do %>
+          <i class="far fa-edit"></i>
+        <% end %>
+
+        <%= link_to topic_path(topic), method: :delete, data: { confirm: "Confirm delete?" } do %>
+          <i class="far fa-trash-alt"></i>
+        <% end %>
+      </h3>
+    </summary>
+
+    <strong><%= topic.part_2 %> <em>You should say:</em></strong>
+
+    <p><%= simple_format(topic.part_2_hints) %></p>
+
+    <hr>
+
+    <p><%= simple_format(topic.part_3) %></p>
+  </details>
+<% end %>
