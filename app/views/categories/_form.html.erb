@@ -1,0 +1,6 @@
+<%= simple_form_for(@category) do |f| %>
+  <%= f.input :name %>
+  <%= f.input :current,
+        label: 'Is this a current topic set?' %>
+  <%= f.button :submit, class: "btn btn-primary" %>
+<% end %>
