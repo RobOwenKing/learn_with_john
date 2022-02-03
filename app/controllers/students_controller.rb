@@ -9,7 +9,7 @@ class StudentsController < ApplicationController
   end
 
   def show
-    topics = Topic.all.order(:name)
+    topics = Topic.where { |t| t.category.current }.order(:name)
 
     @part_1s = topics.reject { |t| t.part_1.empty? }
     @part_2s = topics.reject { |t| t.part_2.empty? }

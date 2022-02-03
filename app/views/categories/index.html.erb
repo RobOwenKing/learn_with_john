@@ -17,4 +17,5 @@
   <%= link_to category_path(category) do %>
     <h3><%= category.name %></h3>
   <% end %>
+  <%= category.topics.map(&:name).join(', ') %>
 <% end %>
