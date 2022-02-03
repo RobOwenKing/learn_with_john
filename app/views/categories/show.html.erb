@@ -5,7 +5,7 @@
     <i class="far fa-edit"></i>
   <% end %>
 
-  <%= link_to category_path(@category), method: :delete, data: { confirm: "Confirm delete?" } do %>
+  <%= link_to category_path(@category), method: :delete, data: { confirm: "Warning! This will delete all associated topics. Continue?" } do %>
     <i class="far fa-trash-alt"></i>
   <% end %>
 </h1>

@@ -1,6 +1,8 @@
 <h1>All Topic Sets</h1>
 
-<%= link_to "Add new topic set", new_category_path, class: "btn btn-primary" %>
+<% if current_user.admin? %>
+  <%= link_to "Add new topic set", new_category_path, class: "btn btn-primary" %>
+<% end %>
 
 <h2>Current categories</h2>
 <% @currents.each do |category| %>
