@@ -6,6 +6,11 @@ main {
   display: flex;
   justify-content: space-evenly;
   text-align: center;
+  flex-wrap: wrap;
+}
+
+.clocks-container div {
+  min-width: 300px;
 }
 
 .clocks-container p {
@@ -29,6 +34,21 @@ details summary > * {
   display: inline;
 }
 
+.topic-details {
+  margin-left: 1em;
+}
+
 .text-grey {
   color: #555;
+}
+
+@media (min-width: 650px) {
+  .details-and-notes {
+    display: flex;
+  }
+
+  .details-and-notes details {
+    width: 50vw;
+    padding-right: 16px;
+  }
 }

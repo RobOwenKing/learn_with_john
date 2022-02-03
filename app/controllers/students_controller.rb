@@ -9,10 +9,12 @@ class StudentsController < ApplicationController
   end
 
   def show
-    topics = Topic.all.order(:name)
+    @topics = Topic.all.order(:name)
+    # This should be refactored into above query
+    @filtered_topics = @topics.select { |t| t.category.current }
 
-    @part_1s = topics.reject { |t| t.part_1.empty? }
-    @part_2s = topics.reject { |t| t.part_2.empty? }
+    @part_1s = @filtered_topics.reject { |t| t.part_1.empty? }
+    @part_2s = @filtered_topics.reject { |t| t.part_2.empty? }
 
     @practiseds = Practised.where(student: @student)
     @practised_ids = @practiseds.map(&:topic_id)

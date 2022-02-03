@@ -1,0 +1,21 @@
+<h1>All Topic Sets</h1>
+
+<% if current_user.admin? %>
+  <%= link_to "Add new topic set", new_category_path, class: "btn btn-primary" %>
+<% end %>
+
+<h2>Current categories</h2>
+<% @currents.each do |category| %>
+  <%= link_to category_path(category) do %>
+    <h3><%= category.name %></h3>
+  <% end %>
+  <%= category.topics.map(&:name).join(', ') %>
+<% end %>
+
+<h2>Old categories</h2>
+<% @olds.each do |category| %>
+  <%= link_to category_path(category) do %>
+    <h3><%= category.name %></h3>
+  <% end %>
+  <%= category.topics.map(&:name).join(', ') %>
+<% end %>
