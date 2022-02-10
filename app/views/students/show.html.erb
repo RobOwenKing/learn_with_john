@@ -57,74 +57,78 @@
 
 <h2>Part 1</h2>
 
-<% @part_1s.each do |topic| %>
-  <details class="topic-details">
-    <summary>
-      <% if @practised_ids.include?(topic.id) %>
-        <h3 class="text-grey">
-          <i class="fas fa-check"></i>
-          <%= topic.name %>
-          <i class="fas fa-caret-down"></i>
-        </h3>
+<div class="topics">
+  <% @part_1s.each do |topic| %>
+    <details class="topic-details">
+      <summary>
+        <% if @practised_ids.include?(topic.id) %>
+          <h3 class="text-grey">
+            <i class="fas fa-check"></i>
+            <%= topic.name %>
+            <i class="fas fa-caret-down"></i>
+          </h3>
+        <% else %>
+          <h3>
+            <i class="fas fa-spinner"></i>
+            <%= topic.name %>
+            <i class="fas fa-caret-down"></i>
+          </h3>
+        <% end %>
+      </summary>
+
+      <p class="white-space-pre-wrap"><%= topic.part_1 %></p>
+
+      <% if @practiseds.any? { |p| p.topic.id == topic.id } %>
+        <p>Practised with <%= find_practised(@practiseds, topic).user.name %></p>
+        <%= link_to "Mark as unpractised",
+                    practised_path(find_practised(@practiseds, topic)),
+                    method: :delete,
+                    data: { confirm: "Definitely mark as unpractised?" } %>
       <% else %>
-        <h3>
-          <i class="fas fa-spinner"></i>
-          <%= topic.name %>
-          <i class="fas fa-caret-down"></i>
-        </h3>
+        <%= render "practiseds/new", practised: @practised, topic: topic %>
       <% end %>
-    </summary>
-
-    <p class="white-space-pre-wrap"><%= topic.part_1 %></p>
-
-    <% if @practiseds.any? { |p| p.topic.id == topic.id } %>
-      <p>Practised with <%= find_practised(@practiseds, topic).user.name %></p>
-      <%= link_to "Mark as unpractised",
-                  practised_path(find_practised(@practiseds, topic)),
-                  method: :delete,
-                  data: { confirm: "Definitely mark as unpractised?" } %>
-    <% else %>
-      <%= render "practiseds/new", practised: @practised, topic: topic %>
-    <% end %>
-  </details>
-<% end %>
+    </details>
+  <% end %>
+</div>
 
 <h2>Part 2 and 3</h2>
 
-<% @part_2s.each do |topic| %>
-  <details class="topic-details">
-    <summary>
-      <% if @practised_ids.include?(topic.id) %>
-        <h3 class="text-grey">
-          <i class="fas fa-check"></i>
-          <%= topic.name %>
-          <i class="fas fa-caret-down"></i>
-        </h3>
+<div class="topics">
+  <% @part_2s.each do |topic| %>
+    <details class="topic-details">
+      <summary>
+        <% if @practised_ids.include?(topic.id) %>
+          <h3 class="text-grey">
+            <i class="fas fa-check"></i>
+            <%= topic.name %>
+            <i class="fas fa-caret-down"></i>
+          </h3>
+        <% else %>
+          <h3>
+            <i class="fas fa-spinner"></i>
+            <%= topic.name %>
+            <i class="fas fa-caret-down"></i>
+          </h3>
+        <% end %>
+      </summary>
+
+      <strong><%= topic.part_2 %> <em>You should say:</em></strong>
+
+      <p class="white-space-pre-wrap"><%= topic.part_2_hints %></p>
+
+      <hr>
+
+      <p class="white-space-pre-wrap"><%= topic.part_3 %></p>
+
+      <% if @practiseds.any? { |p| p.topic.id == topic.id } %>
+        <p>Practised with <%= find_practised(@practiseds, topic).user.name %></p>
+        <%= link_to "Mark as unpractised",
+                    practised_path(find_practised(@practiseds, topic)),
+                    method: :delete,
+                    data: { confirm: "Definitely mark as unpractised?" } %>
       <% else %>
-        <h3>
-          <i class="fas fa-spinner"></i>
-          <%= topic.name %>
-          <i class="fas fa-caret-down"></i>
-        </h3>
+        <%= render "practiseds/new", practised: @practised, topic: topic %>
       <% end %>
-    </summary>
-
-    <strong><%= topic.part_2 %> <em>You should say:</em></strong>
-
-    <p class="white-space-pre-wrap"><%= topic.part_2_hints %></p>
-
-    <hr>
-
-    <p class="white-space-pre-wrap"><%= topic.part_3 %></p>
-
-    <% if @practiseds.any? { |p| p.topic.id == topic.id } %>
-      <p>Practised with <%= find_practised(@practiseds, topic).user.name %></p>
-      <%= link_to "Mark as unpractised",
-                  practised_path(find_practised(@practiseds, topic)),
-                  method: :delete,
-                  data: { confirm: "Definitely mark as unpractised?" } %>
-    <% else %>
-      <%= render "practiseds/new", practised: @practised, topic: topic %>
-    <% end %>
-  </details>
-<% end %>
+    </details>
+  <% end %>
+</div>
