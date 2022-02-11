@@ -34,8 +34,15 @@ details summary > * {
   display: inline;
 }
 
+.topics {
+  display: flex;
+  flex-wrap: wrap;
+}
+
 .topic-details {
   margin-left: 1em;
+  margin-right: 1em;
+  width: 300px;
 }
 
 .text-grey {
