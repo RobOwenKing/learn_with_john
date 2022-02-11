@@ -18,9 +18,13 @@ class TopicsController < ApplicationController
 
   def create
     @topic = Topic.new(topic_params)
-    @topic.save
 
-    redirect_to topics_path
+    if @topic.save
+      redirect_to topics_path
+    else
+      @categories = Category.all.order(name: :desc)
+      render :new
+    end
   end
 
   def edit
@@ -28,9 +32,11 @@ class TopicsController < ApplicationController
   end
 
   def update
-    @topic.update(topic_params)
-
-    redirect_to topics_path
+    if @topic.update(topic_params)
+      redirect_to topics_path
+    else
+      render :edit
+    end
   end
 
   def destroy
