@@ -39,7 +39,7 @@ class CategoriesController < ApplicationController
     if @category.update(category_params)
       redirect_to categories_path
     else
-      render :new
+      render :edit
     end
   end
 
