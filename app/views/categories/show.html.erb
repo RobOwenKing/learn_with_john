@@ -1,6 +1,6 @@
 <% content_for :title, @category.name %>
 
-<h1 class="<%= @category.current ? '' : 'text-grey' %> ">
+<h1 style="color: <%= @category.colour %>">
   <%= @category.name %>
 
   <% if current_user.admin? %>

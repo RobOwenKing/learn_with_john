@@ -9,7 +9,7 @@
 <h2>Current categories</h2>
 <% @currents.each do |category| %>
   <%= link_to category_path(category) do %>
-    <h3><%= category.name %></h3>
+    <h3 style="color: <%= category.colour %>"><%= category.name %></h3>
   <% end %>
   <%= category.topics.map(&:name).join(', ') %>
 <% end %>
@@ -17,7 +17,7 @@
 <h2>Old categories</h2>
 <% @olds.each do |category| %>
   <%= link_to category_path(category) do %>
-    <h3><%= category.name %></h3>
+    <h3 style="color: <%= category.colour %>"><%= category.name %></h3>
   <% end %>
   <%= category.topics.map(&:name).join(', ') %>
 <% end %>
