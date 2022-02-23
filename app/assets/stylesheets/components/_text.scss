@@ -42,7 +42,14 @@ details summary > * {
 .topic-details {
   margin-left: 1em;
   margin-right: 1em;
+}
+
+.part-1 .topic-details {
   width: 300px;
+}
+
+.part-2 .topic-details {
+  width: 500px;
 }
 
 .text-grey {
