@@ -57,9 +57,9 @@ class StudentsController < ApplicationController
 
   def student_params
     if current_user.admin?
-      params.require(:student).permit(:name_zh, :name_en, :timezone, :onboarding, :notes, :app, user_ids: [])
+      params.require(:student).permit(:name_wechat, :name_en, :timezone, :onboarding, :notes, :app, user_ids: [])
     else
-      params.require(:student).permit(:name_zh, :name_en, :timezone, :onboarding, :notes, :app)
+      params.require(:student).permit(:name_wechat, :name_en, :timezone, :onboarding, :notes, :app)
     end
   end
 
