@@ -19,7 +19,7 @@
 </div>
 
 <h2><%= @user.name %>'s student(s)</h2>
-<% @user.students.each do |student| %>
+<% @students.each do |student| %>
   <li>
     <%= link_to student_path(student) do %>
       <%= student.name_en %> (<%= student.name_wechat %>)

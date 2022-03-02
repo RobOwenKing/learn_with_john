@@ -8,6 +8,7 @@ class UsersController < ApplicationController
   end
 
   def show
+    @students = @user.students.order(:name_en)
   end
 
   def edit
