@@ -78,7 +78,7 @@
         <% end %>
       </summary>
 
-      <p class="white-space-pre-wrap"><%= topic.part_1 %></p>
+      <p><%= simple_format(topic.part_1.gsub("\r\n","</p><p>")) %></p>
 
       <% if @practiseds.any? { |p| p.topic.id == topic.id } %>
         <p>Practised with <%= find_practised(@practiseds, topic).user.name %></p>
