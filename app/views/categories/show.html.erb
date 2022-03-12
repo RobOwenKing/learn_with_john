@@ -37,7 +37,7 @@
         </h3>
       </summary>
 
-      <p><%= simple_format(topic.part_1) %></p>
+      <p><%= simple_format(topic.part_1.gsub("\r\n","</p><p>")) %></p>
     </details>
   <% end %>
 </div>
@@ -65,11 +65,11 @@
 
       <strong><%= topic.part_2 %> <em>You should say:</em></strong>
 
-      <p><%= simple_format(topic.part_2_hints) %></p>
+      <p><%= simple_format(topic.part_2_hints.gsub("\r\n","</p><p>")) %></p>
 
       <hr>
 
-      <p><%= simple_format(topic.part_3) %></p>
+      <p><%= simple_format(topic.part_3.gsub("\r\n","</p><p>")) %></p>
     </details>
   <% end %>
 </div>
