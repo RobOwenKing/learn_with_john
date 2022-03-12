@@ -1,5 +1,15 @@
+html {
+  height: 100%;
+}
+
+body {
+  min-height: 100%;
+  position: relative;
+}
+
 main {
   margin: auto 16px;
+  padding-bottom: 2em;
 }
 
 .clocks-container {
@@ -70,4 +80,15 @@ details summary > * {
     width: 50vw;
     padding-right: 16px;
   }
+}
+
+footer {
+  text-align: center;
+  margin: 1em auto;
+  font-size: 0.8em;
+
+  position: absolute;
+  right: 0;
+  left: 0;
+  bottom: 0;
 }
